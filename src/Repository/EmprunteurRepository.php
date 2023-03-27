@@ -39,6 +39,15 @@ class EmprunteurRepository extends ServiceEntityRepository
         }
     }
 
+   public function findAllOrderByName(): array
+   {
+       return $this->createQueryBuilder('e')
+           ->orderBy('e.nom', 'ASC')
+           ->getQuery()
+           ->getResult()
+       ;
+   }
+
 //    /**
 //     * @return Emprunteur[] Returns an array of Emprunteur objects
 //     */

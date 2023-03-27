@@ -50,15 +50,24 @@ Attention, à modifier en fonction de votre service de bdd et de sa version, et 
 ## Ajout des tables dans la BDD
 
 Pour créer les tables de la BDD, il faut utiliser la commande : 
-```
-php bin/console make:entity
-```
+```php bin/console make:entity```
+
 Laisser le terminal vous guider pour la création des colonnes. 
 
 Une fois les tables créées, il faut réaliser dans l'ordre et à la suite les commandes suivantes : 
-```
-php bin/console do:mi:di
-```
-```
-php bin/console do:mi:mi
-```
+``` php bin/console do:mi:di ```
+``` php bin/console do:mi:mi ```
+
+## Création des fixtures
+
+Pour créer le fichier des fixtures, il faut utiliser la commande : 
+``` php bin/console make:fixtures ```
+
+## Création du controller
+
+Pour créer le fichier controller, il faut utiliser la commande : 
+``` php bin/console make:controller ```
+
+## URL pour tester le controller
+
+Pour tester les "users" : localhost:8000/test/user
