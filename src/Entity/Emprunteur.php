@@ -37,6 +37,7 @@ class Emprunteur
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
+
     public function __construct()
     {
         $this->emprunts = new ArrayCollection();
@@ -148,4 +149,5 @@ class Emprunteur
 
         return $this;
     }
+
 }
