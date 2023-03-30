@@ -39,6 +39,50 @@ class EmpruntRepository extends ServiceEntityRepository
         }
     }
 
+   public function findThreeLast(): array
+   {
+       return $this->createQueryBuilder('e')
+           ->orderBy('e.date_emprunt', 'DESC')
+           ->setMaxResults(3)
+           ->getQuery()
+           ->getResult()
+       ;
+   }
+
+   public function allSecondEmprunteurEmprunt(): array
+   {
+       return $this->createQueryBuilder('e')
+            ->join('e.emprunteur', 'em')
+            ->andWhere('em.id = :id')
+            ->setParameter('id', 2)
+           ->orderBy('e.date_emprunt', 'ASC')
+           ->getQuery()
+           ->getResult()
+       ;
+   }
+
+   public function thirdLivreEmprunt(): array
+   {
+       return $this->createQueryBuilder('e')
+            ->join('e.livre', 'l')
+            ->andWhere('l.id = :id')
+            ->setParameter('id', 3)
+           ->orderBy('e.date_emprunt', 'DESC')
+           ->getQuery()
+           ->getResult()
+       ;
+   }
+
+
+   public function findNotReturn(): array
+   {
+       return $this->createQueryBuilder('e')
+            ->andWhere('e.date_retour IS NULL')
+           ->orderBy('e.date_emprunt', 'ASC')
+           ->getQuery()
+           ->getResult()
+       ;
+   }
 //    /**
 //     * @return Emprunt[] Returns an array of Emprunt objects
 //     */

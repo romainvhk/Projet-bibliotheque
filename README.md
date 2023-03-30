@@ -14,6 +14,12 @@ Installation de faker :
 ```
 $ composer require fakerphp/faker --dev
 ```
+
+Lors d'un git clone, pour installer les dépendances : 
+```
+composer install
+```
+
 ## Création du fichier dofilo.sh
 Créer le fichier bin/dofilo.sh
 ```
@@ -71,3 +77,6 @@ Pour créer le fichier controller, il faut utiliser la commande :
 ## URL pour tester le controller
 
 Pour tester les "users" : localhost:8000/test/user
+Pour tester les "livres" : localhost:8000/test/livre
+Pour tester les "emprunteurs" : localhost:8000/test/emprunteur
+Pour tester les "emprunts" : localhost:8000/test/emprunt
