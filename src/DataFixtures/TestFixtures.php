@@ -32,6 +32,11 @@ class TestFixtures extends Fixture
         $this->hasher = $hasher;
     }
 
+    public static function getGroups(): array
+    {
+        return ['test'];
+    }
+
     public function load(ObjectManager $manager): void
     {
         $this->manager = $manager;
@@ -140,8 +145,8 @@ class TestFixtures extends Fixture
             $user->setEnabled(true);
 
             $emprunteur = new Emprunteur();
-            $emprunteur->setNom(ucfirst($this->faker->word()));
-            $emprunteur->setPrenom(ucfirst($this->faker->word()));
+            $emprunteur->setNom(ucfirst($this->faker->firstName($gender = 'male' | 'female')));
+            $emprunteur->setPrenom(ucfirst($this->faker->lastName()));
             $emprunteur->setTel($this->faker->numerify('#########'));
             $emprunteur->setCreatedAt(new DateTimeImmutable());
             $emprunteur->setUpdatedAt(new DateTimeImmutable());

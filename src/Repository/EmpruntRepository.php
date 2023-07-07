@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Emprunt;
+use App\Entity\Emprunteur;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -83,6 +84,18 @@ class EmpruntRepository extends ServiceEntityRepository
            ->getResult()
        ;
    }
+
+   public function findByEmprunteur(Emprunteur $emprunteur): array
+      {
+          return $this->createQueryBuilder('e')
+            ->innerJoin('e.emprunteur', 'er')
+              ->andWhere('er.id = :emprunteurId')
+              ->setParameter('emprunteurId', $emprunteur->getId())
+              ->orderBy('e.date_emprunt', 'ASC')
+              ->getQuery()
+              ->getResult()
+          ;
+      }
 //    /**
 //     * @return Emprunt[] Returns an array of Emprunt objects
 //     */
